@@ -1,38 +1,37 @@
 from tkinter import *
-from playground import * 
 
-# result = calculate(2, add=2, multiply=3, multiply=2)
-# print(result)
 
+FONT = ("Arial", 14)
+PADDING = 20
 window = Tk()
-window.title("New Project GUI")
-window.minsize(width=500, height=300)
-label = Label(text="Label", font=("Arial", 24))
-label.grid(row=0,column=0)
-
-input = Entry()
-input.grid(row=2,column=3)
-
-count = 0
+window.title("Miles to KM Conversion")
+window.minsize(width=100, height=100)
+window.config(padx=PADDING, pady=PADDING)
 
 
-# def increment_count(count):
-#     count += 1
-#     return count + 1
+def convert_from_miles_to_km():
+    conversion = float(input.get()) * 1.61
+    result.config(text=str(round(conversion, 3)))
 
 
-def got_clicked(counts):
-    # counts = increment_count(count)    
-    # counts += 1
-    # new_text = f"Button Got Clicked {counts}!"
-    new_text = f"Button Got Clicked {input.get()}!"
-    label.config(text=new_text)
+miles = Label(text="Miles", font=FONT)
+miles.grid(row=0,column=2)
 
-button = Button(text="Button", command=got_clicked)
-button.grid(row=1,column=1)
+equal = Label(text="is equal to", font=FONT)
+equal.grid(row=1,column=0)
 
-new_button = Button(text="New button", command=got_clicked)
-new_button.grid(row=0,column=2)
+result = Label(text="0", font=FONT)
+result.grid(row=1,column=1)
+
+km = Label(text="KM", font=FONT)
+km.grid(row=1,column=2)
+
+input = Entry(textvariable=0)
+input.grid(row=0,column=1)
+
+
+button = Button(text="Calculate", command=convert_from_miles_to_km)
+button.grid(row=2,column=1)
 
 
 window.mainloop()
